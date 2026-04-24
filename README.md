@@ -1,4 +1,4 @@
-Hello Everybody! My alias is Emporia, it used to be Wokstarthewok, but my first actual alias was originally Emporia.
+Hello Everybody! My alias is Emporia, it used to be Wokstarthewok, but my first actual alias was originally Emporia. I'm new here to uploading crap on Github.
 
 Me and my father made this cheat a reaaally long time ago, just wanted to clarify that.
 One day, turned on my Computer, went on Google Drive to send something to a friend, then this file called EmpBOT.lua struck my eye. I remembered that it was a cheat from a really LONG time ago, so I decided to update it a bit.
