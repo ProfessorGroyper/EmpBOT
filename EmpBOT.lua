@@ -6,7 +6,7 @@
 ▀███▀      █   █    ███           ▀      
           ▀     ▀                        
                                                  
-        Made by Emporia                                                                                                                                                                                                              
+        Made by Emporia & SiliconeJester022                                                                                                                                                                                                             
 --]]
 
 /*
@@ -2646,55 +2646,8 @@ if CLIENT then
             end
         end
     end)
-    
-    hook.Add("HUDPaint", "BhopInfo", function()
-        if not bhopEnabled:GetBool() then return end
-        
-        local ply = LocalPlayer()
-        if not IsValid(ply) then return end
-        
-        local vel = ply:GetVelocity()
-        local speed = math.Round(vel:Length2D())
-        local units = "UPS"
-        
-        if GetConVarNumber("bhop_show_kph") == 1 then
-            speed = math.Round(speed * 0.036) -- UPS to KM/H conversion
-            units = "KM/H"
-        end
-        
-        surface.SetFont("ChatFont")
-        surface.SetTextColor(0, 255, 0, 255)
-        surface.SetTextPos(10, ScrH() - 60)
-        surface.DrawText("Speed: " .. speed .. " " .. units)
-        
-        surface.SetTextPos(10, ScrH() - 40)
-        if ply:IsOnGround() then
-            surface.SetTextColor(255, 255, 0, 255)
-            surface.DrawText("On Ground")
-        else
-            surface.SetTextColor(0, 255, 255, 255)
-            surface.DrawText("In Air")
-        end
-        
-        -- Draw enabled status
-        surface.SetTextPos(10, ScrH() - 20)
-        surface.SetTextColor(255, 100, 100, 255)
-        surface.DrawText("BHOP: " .. (bhopEnabled:GetBool() and "ON" or "OFF"))
-    end)
-    
-    CreateClientConVar("bhop_show_kph", "0", true, false)
-    CreateClientConVar("bhop_show_hud", "1", true, false)
-    
-    concommand.Add("toggle_bhop", function()
-        RunConsoleCommand("bhop_enabled", bhopEnabled:GetBool() and "0" or "1")
-        print("[BunnyHop] " .. (bhopEnabled:GetBool() and "Disabled" or "Enabled"))
-    end)
-    
-    print("[BunnyHop] Script loaded. Commands:")
-    print("  toggle_bhop - Toggle bunny hop")
-    print("  bhop_enabled 0/1 - Enable/disable")
-    print("  bhop_auto 0/1 - Auto-jump on/off")
-    print("  bhop_speed X.X - Speed multiplier")
+
+    print("EmpBOT Executed!! Spray Mafakas >:D")
     
 end
 
