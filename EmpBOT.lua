@@ -10,8 +10,7 @@
 --]]
 
 /*
-	I don’t claim this to be the best hack in the world, I made this with my dad around the year of 2016 (and it's my first real cheat). being a relatively new gLua coder I accept that all my coding
-	is insanely shit. As I have progressed with this cheat I have realized that I could have done things differently with much more efficient code etc. but I haven’t been bothered to fix it.
+	I don’t claim this to be the best hack in the world. this is insanely shit. As I have progressed with this cheat I have realized that I could have done things differently with much more efficient code etc. but I haven’t been bothered to fix it.
 
 	Fyi, the reason there is 2 B-hop scripts is because an old version doesnt work, so I decided to just make an updated one. I was too lazy to remove the old one because I have a fear of breaking shit and then not being able to fix it.
 	So don't expect the checkboxes to work in the B-hop tab in the EmpBOT_Menu.
