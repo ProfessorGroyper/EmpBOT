@@ -2690,15 +2690,31 @@ hook.Add("HUDPaint", "BlueTransparentHUD", function()
     end
 end)
 
-local FOV_VALUE = 120 -- adjust this (default is usually 75-90)
+local cv_fullbright = CreateClientConVar(
+    "EmpBOT_Fullbright",
+    "0",
+    true,
+    false,
+    "Enable fullbright rendering"
+)
 
-hook.Add("CalcView", "ForceHighFOV", function(ply, pos, angles, fov)
-    if not IsValid(ply) then return end
+hook.Add("CalcViewModelView", "PhysgunNoMovement", function(weapon, vm, oldPos, oldAng, pos, ang)
+    if not IsValid(weapon) then return end
+    if weapon:GetClass() ~= "weapon_physgun" then return end
 
-    return {
-        origin = pos,
-        angles = angles,
-        fov = FOV_VALUE,
-        drawviewer = false
-    }
+    return oldPos, oldAng
+end)
+
+hook.Add("PreRender", "AlwaysFullbright", function()
+    if not cv_fullbright:GetBool() then return end
+
+    render.SetLightingMode(1)
+end)
+
+hook.Add("PostRender", "AlwaysFullbrightReset", function()
+    render.SetLightingMode(0)
+end)
+
+hook.Add("PreDrawHUD", "AlwaysFullbrightResetHUD", function()
+    render.SetLightingMode(0)
 end)
