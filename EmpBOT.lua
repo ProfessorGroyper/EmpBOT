@@ -258,7 +258,7 @@ function UnloadEmpBOT( Display )
 		if GetConVarNumber("host_timescale") != NormHostTimeScale then LocalPlayer():ConCommand("incrementvar host_timescale "..NormHostTimeScale.." "..NormHostTimeScale.." "..NormHostTimeScale) end
 		if Display then
 			AddHook( "Unloaded", "HUDPaint", RandomString(), function()
-				draw.SimpleTextOutlined( "EmpBOT Unloaded Successfully!", "Menu_Title", ScrW()/2, 50, Color(0,150,150), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 1, Color(0,0,0) )
+				draw.SimpleTextOutlined( "EmpBOT.lua unloaded successfully ):", "Menu_Title", ScrW()/2, 50, Color(0,150,150), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 1, Color(0,0,0) )
 				timer.Simple( 3, function()
 					RemoveHook("Unloaded")
 				end)
@@ -284,7 +284,7 @@ function ReloadEmpBOT( Display )
 		LocalPlayer():ConCommand("EmpBOT_Menu")
 		if Display then
 			AddHook( "Reloaded", "HUDPaint", RandomString(), function()
-				draw.SimpleTextOutlined( "EmpBOT Reloaded Successfully!", "Menu_Title", ScrW()/2, 50, Color(0,150,150), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 1, Color(0,0,0) )
+				draw.SimpleTextOutlined( "EmpBOT.lua has reloaded successfully!", "Menu_Title", ScrW()/2, 50, Color(0,150,150), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 1, Color(0,0,0) )
 				timer.Simple( 3, function()
 					RemoveHook("Reloaded")
 				end)
@@ -672,7 +672,7 @@ function LoadEmpBOT( Display )
 										draw.SimpleTextOutlined( Name.." ["..Dist.."]", "ESP_Font_Entity", ((MaxX-MinX)/2)+MinX, MinY-5, Color(0,160,240), TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP, 1, Color(0,0,0) )
 									end
 									if EmpBOT.Options["ESP_Entities_BoundaryBoxes"] == true then
-										surface.SetDrawColor( Color(0,160,240) )
+										surface.SetDrawColor( Color(128,0,128) )
 										if EmpBOT.Options["ESP_Entities_BoundaryBoxes_Mode"] == "2D" then
 											surface.DrawLine( MaxX, MaxY, MinX, MaxY )
 											surface.DrawLine( MaxX, MaxY, MaxX, MinY )
@@ -959,7 +959,7 @@ function LoadEmpBOT( Display )
 	end)
 	if Display then
 		AddHook( "Loaded", "HUDPaint", RandomString(), function()
-			draw.SimpleTextOutlined( "EmpBOT Loaded Successfully!", "Menu_Title", ScrW()/2, 50, Color(0,150,150), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 1, Color(0,0,0) )
+			draw.SimpleTextOutlined( "EmpBOT.lua has loaded, enjoy! :D", "Menu_Title", ScrW()/2, 50, Color(128,0,128), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 2, Color(0,0,0) )
 			timer.Simple( 3, function()
 				RemoveHook("Loaded")
 			end)
@@ -1548,7 +1548,7 @@ function AddSlider( Parent, Var, PosX, PosY, Min, Max, Decimals )
 		EmpBOT.Options[Var] = math.Round( Value, Decimals )
 	end
 	AddSlider.Paint = function()
-		draw.RoundedBox( 0, 0, 0, 135, 15, Color(255,255,255,255) )
+		draw.RoundedBox( 0,0,0, 135, 15, Color(255,255,255,255) )
 		surface.SetDrawColor(Color(0,0,0,255))
 		surface.DrawOutlinedRect( 0, 0, 135, 15 )
 		surface.DrawLine( 105, 0, 105, 15 )
@@ -1901,7 +1901,7 @@ function EmpBOTMenu()
 		draw.RoundedBox( 0, 0, 0, w, 24, Color(0,0,0,255) )
 		draw.RoundedBox( 0, 0, 0, w, h, Color(0,10,20,245) )
 		
-		draw.SimpleText( "EmpBOT", "Menu_Title", w/2, 11, Color(0,100,200), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER )
+		draw.SimpleText( "EmpBOT Menu, Have Fun LOL", "Menu_Title", w/2, 11, Color(128, 0, 128), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER )
 		draw.SimpleText( "FPS: "..FPSValue, "ESP_Font_Main", 5, 2, Color(0,255,0),TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM )
 		draw.SimpleText( "Ping: "..LocalPlayer():Ping(), "ESP_Font_Main", 65, 2, Color(0,255,0), TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM )
 		
@@ -1931,7 +1931,7 @@ function EmpBOTMenu()
 	Main:SetSize( Menu:GetWide(), Menu:GetTall()-25 )
 	Main:SetVisible( false )
 	function Main:Paint()
-		draw.RoundedBox( 0, 1, 0, 49, 30, Color(0,0,255,255) )
+		draw.RoundedBox( 0, 1, 0, 49, 30, Color(128,0,128) )
 	end
 	
 	local Aimbot = vgui.Create("DPanel", Menu)
@@ -1939,7 +1939,7 @@ function EmpBOTMenu()
 	Aimbot:SetSize( Menu:GetWide(), Menu:GetTall()-25 )
 	Aimbot:SetVisible( false )
 	function Aimbot:Paint()
-		draw.RoundedBox( 0, 51, 0, 49, 30, Color(0,0,255,255) )
+		draw.RoundedBox( 0, 51, 0, 49, 30, Color(128,0,128) )
 
 		surface.SetDrawColor( Color(255,255,255,255) )
 
@@ -1969,7 +1969,7 @@ function EmpBOTMenu()
 	ESP:SetSize( Menu:GetWide(), Menu:GetTall()-25 )
 	ESP:SetVisible( false )
 	function ESP:Paint()
-		draw.RoundedBox( 0, 101, 0, 49, 30, Color(0,0,255,255) )
+		draw.RoundedBox( 0, 101, 0, 49, 30, Color(128,0,128) )
 	end
 	
 	local Ents = vgui.Create("DPanel", Menu)
@@ -1977,7 +1977,7 @@ function EmpBOTMenu()
 	Ents:SetSize( Menu:GetWide(), Menu:GetTall()-25 )
 	Ents:SetVisible( false )
 	function Ents:Paint()
-		draw.RoundedBox( 0, 151, 0, 49, 30, Color(0,0,255,255) )
+		draw.RoundedBox( 0, 151, 0, 49, 30, Color(128,0,128) )
 	end
 	
 	local Misc = vgui.Create("DPanel", Menu)
@@ -1985,7 +1985,7 @@ function EmpBOTMenu()
 	Misc:SetSize( Menu:GetWide(), Menu:GetTall()-25 )
 	Misc:SetVisible( false )
 	function Misc:Paint()
-		draw.RoundedBox( 0, 201, 0, 49, 30, Color(0,0,255,255) )
+		draw.RoundedBox( 0, 201, 0, 49, 30, Color(128,0,128) )
 	end
 	
 	local Friends = vgui.Create("DPanel", Menu)
@@ -1993,7 +1993,7 @@ function EmpBOTMenu()
 	Friends:SetSize( Menu:GetWide(), Menu:GetTall()-25 )
 	Friends:SetVisible( false )
 	function Friends:Paint()
-		draw.RoundedBox( 0, 251, 0, 49, 30, Color(0,0,255,255) )
+		draw.RoundedBox( 0, 251, 0, 49, 30, Color(128,0,128) )
 		draw.SimpleText( "Friends                                                       Enemies", "ESP_Font_Main", 300, 43, Color(0,255,0), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER )
 	end
 	
@@ -2002,23 +2002,43 @@ function EmpBOTMenu()
 	Cams:SetSize( Menu:GetWide(), Menu:GetTall()-25 )
 	Cams:SetVisible( false )
 	function Cams:Paint()
-		draw.RoundedBox( 0, 301, 0, 49, 30, Color(0,0,255,255) )
+		draw.RoundedBox( 0, 301, 0, 49, 30, Color(128,0,128) )
 	end
 
-	local Bhop = vgui.Create("DPanel", Menu)
-	Bhop:SetPos( 0 , 25 )
-	Bhop:SetSize( Menu:GetWide(), Menu:GetTall()-25 )
-	Bhop:SetVisible( false )
-	function Bhop:Paint()
-		draw.RoundedBox( 0, 351, 0, 49, 30, Color(0,0,255,255) )
-	end
+surface.CreateFont("BhopBrokenBig", {
+    font = "DermaDefaultBold",
+    size = 64,
+    weight = 900,
+    antialias = true
+})
+
+local Bhop = vgui.Create("DPanel", Menu)
+Bhop:SetPos(0, 25)
+Bhop:SetSize(Menu:GetWide(), Menu:GetTall() - 25)
+Bhop:SetVisible(false)
+
+function Bhop:Paint(w, h)
+    draw.RoundedBox(0, 351, 0, 49, 30, Color(128, 0, 128))
+
+    local alpha = 150 + math.sin(CurTime() * 5) * 105
+
+    draw.SimpleText(
+        "BROKEN!",
+        "BhopBrokenBig",
+        w / 2,
+        h / 2,
+        Color(128, 0, 128, alpha),
+        TEXT_ALIGN_CENTER,
+        TEXT_ALIGN_CENTER
+    )
+end
 
 	local Spam = vgui.Create("DPanel", Menu)
 	Spam:SetPos( 0 , 25 )
 	Spam:SetSize( Menu:GetWide(), Menu:GetTall()-25 )
 	Spam:SetVisible( false )
 	function Spam:Paint()
-		draw.RoundedBox( 0, 401, 0, 49, 30, Color(0,0,255,255) )
+		draw.RoundedBox( 0, 401, 0, 49, 30, Color(128,0,128) )
 	end
 	
 	local Test10 = vgui.Create("DPanel", Menu)
@@ -2026,7 +2046,7 @@ function EmpBOTMenu()
 	Test10:SetSize( Menu:GetWide(), Menu:GetTall()-25 )
 	Test10:SetVisible( false )
 	function Test10:Paint()
-		draw.RoundedBox( 0, 451, 0, 49, 30, Color(0,0,255,255) )
+		draw.RoundedBox( 0, 451, 0, 49, 30, Color(128,0,128) )
 	end
 	
 	local Test11 = vgui.Create("DPanel", Menu)
@@ -2034,7 +2054,7 @@ function EmpBOTMenu()
 	Test11:SetSize( Menu:GetWide(), Menu:GetTall()-25 )
 	Test11:SetVisible( false )
 	function Test11:Paint()
-		draw.RoundedBox( 0, 501, 0, 49, 30, Color(0,0,255,255) )
+		draw.RoundedBox( 0, 501, 0, 49, 30, Color(128,0,128) )
 	end
 	
 	local Config = vgui.Create("DPanel", Menu)
@@ -2042,7 +2062,7 @@ function EmpBOTMenu()
 	Config:SetSize( Menu:GetWide(), Menu:GetTall()-25 )
 	Config:SetVisible( false )
 	function Config:Paint()
-		draw.RoundedBox( 0, 551, 0, 48, 30, Color(0,0,255,255) )
+		draw.RoundedBox( 0, 551, 0, 48, 30, Color(128,0,128) )
 		draw.SimpleText( "Configuration save manager", "ESP_Font_Main", 300, 43, Color(0,255,0), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER )
 	end
 	
@@ -2051,7 +2071,7 @@ function EmpBOTMenu()
 	FriendSaves:SetSize( Menu:GetWide(), Menu:GetTall()-25 )
 	FriendSaves:SetVisible( false )
 	function FriendSaves:Paint()
-		draw.RoundedBox( 0, 251, 0, 49, 30, Color(0,0,255,255) )
+		draw.RoundedBox( 0, 251, 0, 49, 30, Color(128,0,128) )
 		draw.SimpleText( "Friends list save manager", "ESP_Font_Main", 300, 43, Color(0,255,0), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER )
 	end
 	
@@ -2060,7 +2080,7 @@ function EmpBOTMenu()
 	EntitySaves:SetSize( Menu:GetWide(), Menu:GetTall()-25 )
 	EntitySaves:SetVisible( false )
 	function EntitySaves:Paint()
-		draw.RoundedBox( 0, 151, 0, 49, 30, Color(0,0,255,255) )
+		draw.RoundedBox( 0, 151, 0, 49, 30, Color(128,0,128) )
 		draw.SimpleText( "Entity ESP save manager", "ESP_Font_Main", 300, 43, Color(0,255,0), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER )
 	end
 
@@ -2069,7 +2089,7 @@ function EmpBOTMenu()
 	CustomCrosshair:SetSize( Menu:GetWide(), Menu:GetTall()-25 )
 	CustomCrosshair:SetVisible( false )
 	function CustomCrosshair:Paint()
-		draw.RoundedBox( 0, 101, 0, 49, 30, Color(0,0,255,255) )
+		draw.RoundedBox( 0, 101, 0, 49, 30, Color(128,0,128) )
 		draw.SimpleText( "Custom Crosshair", "ESP_Font_Main", 300, 43, Color(0,255,0), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER )
 	end
 	
@@ -2253,7 +2273,7 @@ function EmpBOTMenu()
 	AddCheckBox( ESP, "Spectators", 15, 165, "Draw/Ignore ESP for spectators", "ESP_ShowSpectators" )
 
 	AddComboBox( ESP, 100, 65, 70, 15, "ESP_ShowTeamV", {"Show", "Ignore"} )
-	AddComboBox( ESP, 100, 85, 70, 15, "ESP_ShowOpponentsV", {"Show", "Ignore"} )
+	AddComboBox( ESP, 128, 0, 128, 15, "ESP_ShowOpponentsV", {"Show", "Ignore"} )
 	AddComboBox( ESP, 100, 105, 70, 15, "ESP_ShowFriendsV", {"Show", "Ignore"} )
 	AddComboBox( ESP, 100, 125, 70, 15, "ESP_ShowEnemiesV", {"Show", "Ignore"} )
 	AddComboBox( ESP, 100, 145, 70, 15, "ESP_ShowNPCsV", {"Show", "Ignore"} )
