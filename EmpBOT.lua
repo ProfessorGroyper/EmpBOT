@@ -45,7 +45,7 @@ EmpBOT.Options["Aimbot_SmoothAim"] = false
 EmpBOT.Options["Aimbot_SmoothAim_Value"] = 600
 EmpBOT.Options["Aimbot_AimPriority"] = "Distance"
 EmpBOT.Options["Aimbot_FOV"] = false
-if LocalPlayer():GetFOV() != nil then EmpBOT.Options["Aimbot_FOV_Value"] = LocalPlayer():GetFOV() else EmpBOT.Options["Aimbot_FOV_Value"] = 75 end
+EmpBOT.Options["Aimbot_FOV_Value"] = (IsValid(LocalPlayer()) and GetConVarNumber("fov_desired") or 75)
 EmpBOT.Options["Aimbot_StickToTarget"] = false
 EmpBOT.Options["Aimbot_BoneAim"] = false
 EmpBOT.Options["Aimbot_AutoShoot"] = false
@@ -2321,11 +2321,11 @@ end
 	AddCheckBox( ESP, "Spectators", 15, 165, "Draw/Ignore ESP for spectators", "ESP_ShowSpectators" )
 
 	AddComboBox( ESP, 100, 65, 70, 15, "ESP_ShowTeamV", {"Show", "Ignore"} )
-	AddComboBox( ESP, 128, 0, 128, 15, "ESP_ShowOpponentsV", {"Show", "Ignore"} )
-	AddComboBox( ESP, 100, 105, 70, 15, "ESP_ShowFriendsV", {"Show", "Ignore"} )
-	AddComboBox( ESP, 100, 125, 70, 15, "ESP_ShowEnemiesV", {"Show", "Ignore"} )
-	AddComboBox( ESP, 100, 145, 70, 15, "ESP_ShowNPCsV", {"Show", "Ignore"} )
-	AddComboBox( ESP, 100, 165, 70, 15, "ESP_ShowSpectatorsV", {"Show", "Ignore"} )
+    AddComboBox( ESP, 100, 85, 70, 15, "ESP_ShowOpponentsV", {"Show", "Ignore"} )  -- fixed Y
+    AddComboBox( ESP, 100, 105, 70, 15, "ESP_ShowFriendsV", {"Show", "Ignore"} )
+    AddComboBox( ESP, 100, 125, 70, 15, "ESP_ShowEnemiesV", {"Show", "Ignore"} )
+    AddComboBox( ESP, 100, 145, 70, 15, "ESP_ShowNPCsV", {"Show", "Ignore"} )
+    AddComboBox( ESP, 100, 165, 70, 15, "ESP_ShowSpectatorsV", {"Show", "Ignore"} )
 
 	AddCheckBox( ESP, "Boundary Boxes", 15, 190, "Display a box around players", "ESP_BoundaryBoxes" )
 	AddComboBox( ESP, 120, 190, 35, 15, "ESP_BoundaryBoxes_Mode", { "2D", "3D" } )
