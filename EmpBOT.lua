@@ -2197,7 +2197,55 @@ end
 	AddCheckBox( Aimbot, "Auto Shoot", 100, 85, "Automatically shoot when the aimbot is locked onto someone", "Aimbot_AutoShoot")
 
 	AddCheckBox( Aimbot, "Aim On Key", 15, 105, "Aimbot only active when selected key is held down", "Aimbot_AimOnKey" )
-	AddKeyBind( Aimbot, 100, 105, "Aimbot_AimOnKey_Key" )
+	-- AddKeyBind( Aimbot, 100, 105, "Aimbot_AimOnKey_Key" )  -- BROKEN, using dropdown instead
+	-- FIXED: Dropdown for aim key instead of broken keybind
+local AimKeyDropdown = vgui.Create( "DComboBox", Aimbot )
+AimKeyDropdown:SetPos( 100, 105 )
+AimKeyDropdown:SetSize( 100, 20 )
+AimKeyDropdown:SetValue( "Select Key" )
+
+local KeyOptions = {
+    "MOUSE_LEFT", "MOUSE_RIGHT", "MOUSE_MIDDLE", "MOUSE_4", "MOUSE_5",
+    "SHIFT", "CTRL", "ALT", "SPACE", "E", "Q", "R", "F", "G", "V", "C", "X", "Z"
+}
+
+for _, keyName in ipairs( KeyOptions ) do
+    AimKeyDropdown:AddChoice( keyName )
+end
+
+-- Map dropdown selections to key codes
+local KeyCodeMap = {
+    ["MOUSE_LEFT"] = 107,
+    ["MOUSE_RIGHT"] = 108,
+    ["MOUSE_MIDDLE"] = 109,
+    ["MOUSE_4"] = 110,
+    ["MOUSE_5"] = 111,
+    ["SHIFT"] = 79,
+    ["CTRL"] = 83,
+    ["ALT"] = 81,
+    ["SPACE"] = 65,
+    ["E"] = 15,
+    ["Q"] = 27,
+    ["R"] = 28,
+    ["F"] = 16,
+    ["G"] = 17,
+    ["V"] = 32,
+    ["C"] = 13,
+    ["X"] = 34,
+    ["Z"] = 36
+}
+
+AimKeyDropdown.OnSelect = function( _, _, value )
+    EmpBOT.Options["Aimbot_AimOnKey_Key"] = KeyCodeMap[value] or 0
+end
+
+-- Set dropdown to current bind
+for code, name in pairs( KeyCodeMap ) do
+    if EmpBOT.Options["Aimbot_AimOnKey_Key"] == code then
+        AimKeyDropdown:SetText( name )
+        break
+    end
+end
 	AddLabel( Aimbot, "Aim Priority:", 40, 125 )
 	AddComboBox( Aimbot, 100, 125, 100, 15, "Aimbot_AimPriority", {"Distance", "Crosshair"} )
 	AddCheckBox( Aimbot, "Smooth Aim", 15, 145, "Aims at other players slowly (looks more legit)", "Aimbot_SmoothAim")
