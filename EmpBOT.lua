@@ -2766,13 +2766,6 @@ local cv_fullbright = CreateClientConVar(
     "Enable fullbright rendering"
 )
 
-hook.Add("CalcViewModelView", "PhysgunNoMovement", function(weapon, vm, oldPos, oldAng, pos, ang)
-    if not IsValid(weapon) then return end
-    if weapon:GetClass() ~= "weapon_physgun" then return end
-
-    return oldPos, oldAng
-end)
-
 hook.Add("PreRender", "AlwaysFullbright", function()
     if not cv_fullbright:GetBool() then return end
 
